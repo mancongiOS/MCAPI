@@ -1,0 +1,6 @@
+framework module Pods_MCAPI {
+  umbrella header "Pods-MCAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}
