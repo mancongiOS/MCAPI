@@ -17,7 +17,7 @@ class MCFourViewController: UIViewController {
         
         title = "倒计时"
         
-        let time = countDown.openCountdown(start: "2018-07-30 18:00:00.0", end: "2018-07-30 18:10:00.0", format: "yyyy-MM-dd HH:mm:ss.s")
+        let time = countDown.openCountdown(start: "2016-12-07 10:00:00.0", end: "2016-12-07 10:00:10.0", format: "yyyy-MM-dd HH:mm:ss.S")
         showCountDown(time: time)
         
         countDown.closure = {time in

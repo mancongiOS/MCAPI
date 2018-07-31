@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+ * 时间格式应用 https://www.cnblogs.com/mancong/p/5422471.html
+ */
+
 typealias MCCountDownClosure = (MCCountDownStruct) -> Void
 
 class MCCountDown: NSObject {
@@ -29,13 +33,13 @@ class MCCountDown: NSObject {
         dateFormatter.dateFormat = format
         dateFormatter.timeZone = TimeZone.init(identifier: "GMT")
         
-        let createDate = dateFormatter.date(from: start) ?? Date.init()
-        let endDate = dateFormatter.date(from: end) ?? Date.init()
+        let createDate = dateFormatter.date(from: start)
+        let endDate = dateFormatter.date(from: end)
         
         
         let calendar = Calendar.current
         let unit:Set<Calendar.Component> = [.day,.hour,.minute,.second,.nanosecond]
-        let commponent:DateComponents = calendar.dateComponents(unit, from: createDate, to: endDate)
+        let commponent:DateComponents = calendar.dateComponents(unit, from: createDate!, to: endDate!)
         
         second      = commponent.second     ?? 0
         minit       = commponent.minute     ?? 0
@@ -45,12 +49,19 @@ class MCCountDown: NSObject {
         
         let time = MCCountDownStruct(day:day,hour:hour,minit:minit,second:second,nanosecond:nanosecond)
         
+        print("\(time)-----createDate\(createDate!) ---start\(start) ----- endDate\(endDate!)---end\(end)")
         
-        //TODO: 为什么这个闭包为空，没有回调出去！！！
+        
+        
+        //TODO: 为什么这个闭包为nil，没有回调出去！！！
         closure?(time)
 
-        timer = Timer.scheduledTimer(timeInterval: 1/10, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
-        RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
+        if  nanosecond == 0 && second == 0 && minit == 0 && hour == 0 && day == 0 {
+            return time
+        } else {
+            timer = Timer.scheduledTimer(timeInterval: 1/10, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+            RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
+        }
         
         return time
     }
@@ -80,7 +91,7 @@ class MCCountDown: NSObject {
         }
         
         
-        if  second == 0 && minit == 0 && hour == 0 && day == 0 {
+        if  nanosecond == 0 && second == 0 && minit == 0 && hour == 0 && day == 0 {
             self.timer?.invalidate()
             timer = nil
         }
@@ -101,5 +112,4 @@ struct MCCountDownStruct {
     var minit      : Int
     var second     : Int
     var nanosecond : Int
-    
 }
