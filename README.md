@@ -1,6 +1,6 @@
 # MCAPI
 
-###功能一： 定位与编码封装
+### 功能一： 定位与编码封装
 
 ![定位与编码/反编码](https://github.com/mancongiOS/MCAPI/blob/master/GitHubImages/location.png)
 ```
@@ -32,7 +32,8 @@ positioning.clousre = { (latitude,longitude) in
 
 ```
 
-###功能二: 网络监听
+### 功能二: 网络监听
+
 ![网络监听](https://github.com/mancongiOS/MCAPI/blob/master/GitHubImages/wifi.png)
 
 ```
@@ -49,7 +50,8 @@ MCNetwork.shared.startNetworkReachabilityObserver { (status) in
 
 
 
-###功能三: 自定义MJRefresh
+### 功能三: 自定义MJRefresh
+
 ![网络监听](https://github.com/mancongiOS/MCAPI/blob/master/GitHubImages/MJRefresh.png)
 ```
 tableView.mj_header = MCRefreshHeader(refreshingBlock: {
@@ -60,7 +62,8 @@ tableView.mj_footer = MCRefreshFooter(refreshingBlock: {
 ```
 
 
-###功能二: 倒计时
+### 功能四: 倒计时
+
 ![网络监听](https://github.com/mancongiOS/MCAPI/blob/master/GitHubImages/countDown.png)
 ```
 let time = countDown.openCountdown(start: "2016-12-07 10:00:00.0", end: "2016-12-07 10:00:10.0", format: "yyyy-MM-dd HH:mm:ss.S")
@@ -71,7 +74,8 @@ countDown.closure = {time in
 }
 ```
 
-###功能二:自定义时间选择器
+### 功能五:自定义时间选择器
+
 ![网络监听](https://github.com/mancongiOS/MCAPI/blob/master/GitHubImages/datePicker.png)
 ```
 lazy var pickerView: MCDatePicker = {
