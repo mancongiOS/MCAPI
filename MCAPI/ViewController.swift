@@ -39,7 +39,9 @@ class ViewController: UIViewController {
             "定位与编码/反编码",
             "网络状态的监听",
             "自定义MJRefresh",
-            "倒计时"
+            "倒计时",
+            "自定义相册",
+            "时间选择器"
         ]
     }
     
@@ -107,6 +109,13 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
         case 3:
             let vc = MCFourViewController()
             navigationController?.pushViewController(vc, animated: true)
+        case 4:
+            let vc = MCFiveViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case 5:
+            let vc = MCSixViewController()
+            navigationController?.pushViewController(vc, animated: true)
+            
 
         default:
             break

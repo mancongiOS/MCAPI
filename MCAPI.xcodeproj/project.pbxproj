@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		430022A76FA79DEA8AE3CB64 /* Pods_MCAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6166B9B75BFF2C5B76FA2B7 /* Pods_MCAPI.framework */; };
+		4C22A5792114455600614F85 /* MCPhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C22A5782114455600614F85 /* MCPhotoPickerViewController.swift */; };
+		4C22A581211463CD00614F85 /* MCFiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C22A57F211463CD00614F85 /* MCFiveViewController.swift */; };
+		4C22A582211463CD00614F85 /* MCFiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C22A580211463CD00614F85 /* MCFiveViewController.xib */; };
 		4C245219210F151300B488D6 /* MCCountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C245218210F151300B488D6 /* MCCountDown.swift */; };
 		4C24521D210F15A400B488D6 /* MCFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C24521B210F15A400B488D6 /* MCFourViewController.swift */; };
 		4C24521E210F15A400B488D6 /* MCFourViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C24521C210F15A400B488D6 /* MCFourViewController.xib */; };
@@ -21,6 +24,7 @@
 		4C3291F9210B1772009B820F /* Refresh_header_three@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3291F1210B1772009B820F /* Refresh_header_three@2x.png */; };
 		4C3291FA210B1772009B820F /* Refresh_header_three@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3291F2210B1772009B820F /* Refresh_header_three@3x.png */; };
 		4C3291FB210B1772009B820F /* Refresh_header_two@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3291F3210B1772009B820F /* Refresh_header_two@3x.png */; };
+		4C32F85621241136000BE8D0 /* MCDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32F85521241136000BE8D0 /* MCDateManager.swift */; };
 		4CF340FB210890780049D4A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF340FA210890780049D4A7 /* AppDelegate.swift */; };
 		4CF340FD210890780049D4A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF340FC210890780049D4A7 /* ViewController.swift */; };
 		4CF34100210890780049D4A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF340FE210890780049D4A7 /* Main.storyboard */; };
@@ -34,9 +38,14 @@
 		4CF3412F2109D0590049D4A7 /* MCTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3412D2109D0590049D4A7 /* MCTwoViewController.swift */; };
 		4CF341302109D0590049D4A7 /* MCTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF3412E2109D0590049D4A7 /* MCTwoViewController.xib */; };
 		4CF341342109DAA90049D4A7 /* MCThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF341322109DAA90049D4A7 /* MCThreeViewController.swift */; };
+		4CF505D4212181000008C7D3 /* MCDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF505D3212181000008C7D3 /* MCDatePicker.swift */; };
+		4CF505D7212181300008C7D3 /* MCSixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF505D6212181300008C7D3 /* MCSixViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C22A5782114455600614F85 /* MCPhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPhotoPickerViewController.swift; sourceTree = "<group>"; };
+		4C22A57F211463CD00614F85 /* MCFiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCFiveViewController.swift; sourceTree = "<group>"; };
+		4C22A580211463CD00614F85 /* MCFiveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MCFiveViewController.xib; sourceTree = "<group>"; };
 		4C245218210F151300B488D6 /* MCCountDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCountDown.swift; sourceTree = "<group>"; };
 		4C24521B210F15A400B488D6 /* MCFourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCFourViewController.swift; sourceTree = "<group>"; };
 		4C24521C210F15A400B488D6 /* MCFourViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MCFourViewController.xib; sourceTree = "<group>"; };
@@ -50,6 +59,7 @@
 		4C3291F1210B1772009B820F /* Refresh_header_three@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Refresh_header_three@2x.png"; sourceTree = "<group>"; };
 		4C3291F2210B1772009B820F /* Refresh_header_three@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Refresh_header_three@3x.png"; sourceTree = "<group>"; };
 		4C3291F3210B1772009B820F /* Refresh_header_two@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Refresh_header_two@3x.png"; sourceTree = "<group>"; };
+		4C32F85521241136000BE8D0 /* MCDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCDateManager.swift; sourceTree = "<group>"; };
 		4CF340F7210890780049D4A7 /* MCAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF340FA210890780049D4A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF340FC210890780049D4A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +75,8 @@
 		4CF3412D2109D0590049D4A7 /* MCTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTwoViewController.swift; sourceTree = "<group>"; };
 		4CF3412E2109D0590049D4A7 /* MCTwoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MCTwoViewController.xib; sourceTree = "<group>"; };
 		4CF341322109DAA90049D4A7 /* MCThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCThreeViewController.swift; sourceTree = "<group>"; };
+		4CF505D3212181000008C7D3 /* MCDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCDatePicker.swift; sourceTree = "<group>"; };
+		4CF505D6212181300008C7D3 /* MCSixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSixViewController.swift; sourceTree = "<group>"; };
 		53461BC2D6B74BA6D431337D /* Pods-MCAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MCAPI/Pods-MCAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		54C8E05BF79E2FE5B2D436B4 /* Pods-MCAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCAPI.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCAPI/Pods-MCAPI.release.xcconfig"; sourceTree = "<group>"; };
 		C6166B9B75BFF2C5B76FA2B7 /* Pods_MCAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +101,23 @@
 				54C8E05BF79E2FE5B2D436B4 /* Pods-MCAPI.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		4C22A5772114452500614F85 /* MCPhotoKit(图片选择) */ = {
+			isa = PBXGroup;
+			children = (
+				4C22A5782114455600614F85 /* MCPhotoPickerViewController.swift */,
+			);
+			path = "MCPhotoKit(图片选择)";
+			sourceTree = "<group>";
+		};
+		4C22A57C2114637300614F85 /* Five(自定义相册) */ = {
+			isa = PBXGroup;
+			children = (
+				4C22A57F211463CD00614F85 /* MCFiveViewController.swift */,
+				4C22A580211463CD00614F85 /* MCFiveViewController.xib */,
+			);
+			path = "Five(自定义相册)";
 			sourceTree = "<group>";
 		};
 		4C245217210F14F800B488D6 /* CountDown(倒计时) */ = {
@@ -185,6 +214,8 @@
 		4CF341152109B2050049D4A7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				4CF505D2212180E10008C7D3 /* MCDatePicker(时间选择器) */,
+				4C22A5772114452500614F85 /* MCPhotoKit(图片选择) */,
 				4C245217210F14F800B488D6 /* CountDown(倒计时) */,
 				4CF341362109DC1C0049D4A7 /* MCRefresh(加载刷新) */,
 				4CF341292109C8210049D4A7 /* MCNetwork(网络) */,
@@ -227,6 +258,8 @@
 		4CF3411E2109B3280049D4A7 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				4CF505D5212181240008C7D3 /* Six(时间选择器) */,
+				4C22A57C2114637300614F85 /* Five(自定义相册) */,
 				4C24521A210F159200B488D6 /* Four(倒计时) */,
 				4CF341312109DA990049D4A7 /* Three(自定义MJRefresh) */,
 				4CF3412C2109D0490049D4A7 /* Two(网络监听) */,
@@ -277,6 +310,23 @@
 				4C3291EB210B1772009B820F /* RefreshImages */,
 			);
 			path = "MCRefresh(加载刷新)";
+			sourceTree = "<group>";
+		};
+		4CF505D2212180E10008C7D3 /* MCDatePicker(时间选择器) */ = {
+			isa = PBXGroup;
+			children = (
+				4CF505D3212181000008C7D3 /* MCDatePicker.swift */,
+				4C32F85521241136000BE8D0 /* MCDateManager.swift */,
+			);
+			path = "MCDatePicker(时间选择器)";
+			sourceTree = "<group>";
+		};
+		4CF505D5212181240008C7D3 /* Six(时间选择器) */ = {
+			isa = PBXGroup;
+			children = (
+				4CF505D6212181300008C7D3 /* MCSixViewController.swift */,
+			);
+			path = "Six(时间选择器)";
 			sourceTree = "<group>";
 		};
 		579147DDC11FF1552BF99977 /* Frameworks */ = {
@@ -359,6 +409,7 @@
 				4C3291F6210B1772009B820F /* Refresh_header_one@3x.png in Resources */,
 				4CF34100210890780049D4A7 /* Main.storyboard in Resources */,
 				4C3291F7210B1772009B820F /* Refresh_footer@3x.png in Resources */,
+				4C22A582211463CD00614F85 /* MCFiveViewController.xib in Resources */,
 				4C3291FB210B1772009B820F /* Refresh_header_two@3x.png in Resources */,
 				4C24521E210F15A400B488D6 /* MCFourViewController.xib in Resources */,
 				4C3291F8210B1772009B820F /* Refresh_header_two@2x.png in Resources */,
@@ -421,7 +472,12 @@
 				4CF3411D2109B2050049D4A7 /* MCPositioning.swift in Sources */,
 				4C3291E8210B04D8009B820F /* MCRefreshHeader.swift in Sources */,
 				4CF341272109B3850049D4A7 /* MCOneViewController.swift in Sources */,
+				4CF505D4212181000008C7D3 /* MCDatePicker.swift in Sources */,
+				4CF505D7212181300008C7D3 /* MCSixViewController.swift in Sources */,
 				4CF3412F2109D0590049D4A7 /* MCTwoViewController.swift in Sources */,
+				4C32F85621241136000BE8D0 /* MCDateManager.swift in Sources */,
+				4C22A5792114455600614F85 /* MCPhotoPickerViewController.swift in Sources */,
+				4C22A581211463CD00614F85 /* MCFiveViewController.swift in Sources */,
 				4CF341342109DAA90049D4A7 /* MCThreeViewController.swift in Sources */,
 				4C24521D210F15A400B488D6 /* MCFourViewController.swift in Sources */,
 				4CF340FD210890780049D4A7 /* ViewController.swift in Sources */,

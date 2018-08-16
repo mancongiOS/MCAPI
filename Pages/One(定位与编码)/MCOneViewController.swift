@@ -79,10 +79,7 @@ class MCOneViewController: UIViewController {
                 self.twoLabel.text = error
             })
         }
-        
-        positioning.clousre = { (a,b) in
-            
-        }
+
     }
     
     @objc func didBecomeActive() {

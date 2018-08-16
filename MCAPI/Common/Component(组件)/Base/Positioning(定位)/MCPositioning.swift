@@ -101,6 +101,9 @@ extension MCPositioning:  CLLocationManagerDelegate {
         
         let latitude : Double = coordinate.latitude
         let longitude : Double = coordinate.longitude
+        
+        print("\(latitude) ---- \(longitude)")
+        
         clousre?(latitude,longitude)
     }
     
