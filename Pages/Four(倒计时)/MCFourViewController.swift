@@ -21,6 +21,7 @@ class MCFourViewController: UIViewController {
         showCountDown(time: time)
         
         countDown.closure = {time in
+            
             self.showCountDown(time: time)
         }
     }
