@@ -31,9 +31,20 @@ class MCSixViewController: UIViewController {
         pickerView.datePickerClosure = { time in
             self.showReseutLabel.text = "选中的时间是  " + time
         }
+        
+        
+        popUpView.pickerView.datePickerClosure = { time in
+            self.chooseButton.setTitle("选中的时间是  " + time, for: .normal)
+        }
     }
     
     // MARK: - Action
+    @objc func chooseButtonClicked() {
+        view.window?.addSubview(popUpView)
+        popUpView.snp.remakeConstraints { (make) ->Void in
+            make.edges.equalTo(view.window!)
+        }
+    }
     
     // MARK: - Network
     func sendNetworking() {
@@ -59,6 +70,15 @@ class MCSixViewController: UIViewController {
             make.centerX.equalTo(view)
             make.top.equalTo(pickerView.snp.bottom).offset(50)
         }
+        
+        view.addSubview(chooseButton)
+        chooseButton.snp.remakeConstraints { (make) ->Void in
+            make.centerX.equalTo(view)
+            make.top.equalTo(showReseutLabel.snp.bottom).offset(50)
+            make.size.equalTo(CGSize.init(width: 200, height: 40))
+        }
+        
+        pickerView.pickerView.showsSelectionIndicator = true
     }
     
     // MARK: - Setter & Getter
@@ -81,5 +101,19 @@ class MCSixViewController: UIViewController {
         let label = UILabel()
         label.textColor = UIColor.red
         return label
+    }()
+    
+    lazy var chooseButton: UIButton = {
+        let button = UIButton.init(type: UIButtonType.custom)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.setTitleColor(UIColor.red, for: .normal)
+        button.setTitle("点击弹出", for: .normal)
+        button.addTarget(self, action: #selector(chooseButtonClicked), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var popUpView: MCDatePickerPopupView = {
+        let view = MCDatePickerPopupView()
+        return view
     }()
 }

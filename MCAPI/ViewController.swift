@@ -41,7 +41,8 @@ class ViewController: UIViewController {
             "自定义MJRefresh",
             "倒计时",
             "自定义相册",
-            "时间选择器"
+            "时间选择器",
+            "自定义裁切图片"
         ]
     }
     
@@ -86,7 +87,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
         
         cell.textLabel?.text = dataArray?[indexPath.row] as? String ?? ""
         
-        
+            
         let lineView = UIView()
         lineView.backgroundColor = UIColor.lightGray
         lineView.frame = CGRect.init(x: 0, y: 59, width: self.view.frame.size.width, height: 1)
@@ -96,7 +97,12 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      
+        print("点击了")
         switch indexPath.row {
+            
+            
+            
         case 0:
             let vc = MCOneViewController()
             navigationController?.pushViewController(vc, animated: true)
@@ -115,7 +121,9 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
         case 5:
             let vc = MCSixViewController()
             navigationController?.pushViewController(vc, animated: true)
-            
+        case 6:
+            let vc = MCSevenViewController()
+            navigationController?.pushViewController(vc, animated: true)
 
         default:
             break

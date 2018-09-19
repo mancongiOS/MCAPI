@@ -74,6 +74,7 @@ class MCRefreshHeader: MJRefreshHeader {
                 
             case .idle:
                 refreshStatusLabel.text = "准备加载"
+                refreshImageView.startAnimating()
             case .willRefresh:
                 refreshStatusLabel.text = "即将刷新"
             case .pulling:

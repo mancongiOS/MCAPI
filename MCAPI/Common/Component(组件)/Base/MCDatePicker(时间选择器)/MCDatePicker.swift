@@ -114,7 +114,7 @@ class MCDatePicker: UIView {
         
         
         pickerView.frame = CGRect.init(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
-        
+
         
         switch dateMode {
         case .year:
@@ -370,8 +370,6 @@ class MCDatePicker: UIView {
         let p = UIPickerView()
         p.dataSource = self
         p.delegate = self
-        p.showsSelectionIndicator = true
-
         return p
     }()
     
@@ -392,6 +390,9 @@ class MCDatePicker: UIView {
 }
 
 extension MCDatePicker : UIPickerViewDelegate,UIPickerViewDataSource {
+    
+    
+    
     //设置选择框的列数为3列,继承于UIPickerViewDataSource协议
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
                 
@@ -436,6 +437,15 @@ extension MCDatePicker : UIPickerViewDelegate,UIPickerViewDataSource {
     // 修改选项的字体大小和颜色
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int,
                     forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        
+        for view in pickerView.subviews {
+            if view.frame.size.height < 1 {
+                view.backgroundColor = UIColor.init(white: 0, alpha: 0.4)
+            }
+        }
+        
+
         var pickerLabel = view as? UILabel
         if pickerLabel == nil {
             pickerLabel = UILabel()

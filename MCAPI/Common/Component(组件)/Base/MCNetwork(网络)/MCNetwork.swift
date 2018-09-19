@@ -37,7 +37,6 @@ class MCNetwork {
         // start listening
         reachabilityManager?.startListening()
     }
-    
     // 销毁
     deinit {
         reachabilityManager?.stopListening()
@@ -51,3 +50,23 @@ enum MCNetworkStatus {
     case WIFI
     case WWAN
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -25,6 +25,13 @@
 		4C3291FA210B1772009B820F /* Refresh_header_three@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3291F2210B1772009B820F /* Refresh_header_three@3x.png */; };
 		4C3291FB210B1772009B820F /* Refresh_header_two@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3291F3210B1772009B820F /* Refresh_header_two@3x.png */; };
 		4C32F85621241136000BE8D0 /* MCDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32F85521241136000BE8D0 /* MCDateManager.swift */; };
+		4C869311214B8517002277BD /* MCSevenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C869310214B8517002277BD /* MCSevenViewController.swift */; };
+		4C90574221509244009506F6 /* ClipImage_sure.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C90573C21509243009506F6 /* ClipImage_sure.png */; };
+		4C90574421509244009506F6 /* ClipImage_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C90573E21509244009506F6 /* ClipImage_cancel.png */; };
+		4C90574521509244009506F6 /* ClipImage_rotating.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C90573F21509244009506F6 /* ClipImage_rotating.png */; };
+		4C9057482150C830009506F6 /* MCClipImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9057472150C830009506F6 /* MCClipImageTool.swift */; };
+		4CA1EB0A2137D1C2009A49F6 /* MCDatePickerPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA1EB092137D1C2009A49F6 /* MCDatePickerPopupView.swift */; };
+		4CBA2A54214B9FE800A6D981 /* MCClipImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA2A53214B9FE800A6D981 /* MCClipImageViewController.swift */; };
 		4CF340FB210890780049D4A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF340FA210890780049D4A7 /* AppDelegate.swift */; };
 		4CF340FD210890780049D4A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF340FC210890780049D4A7 /* ViewController.swift */; };
 		4CF34100210890780049D4A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF340FE210890780049D4A7 /* Main.storyboard */; };
@@ -60,6 +67,13 @@
 		4C3291F2210B1772009B820F /* Refresh_header_three@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Refresh_header_three@3x.png"; sourceTree = "<group>"; };
 		4C3291F3210B1772009B820F /* Refresh_header_two@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Refresh_header_two@3x.png"; sourceTree = "<group>"; };
 		4C32F85521241136000BE8D0 /* MCDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCDateManager.swift; sourceTree = "<group>"; };
+		4C869310214B8517002277BD /* MCSevenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSevenViewController.swift; sourceTree = "<group>"; };
+		4C90573C21509243009506F6 /* ClipImage_sure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClipImage_sure.png; sourceTree = "<group>"; };
+		4C90573E21509244009506F6 /* ClipImage_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClipImage_cancel.png; sourceTree = "<group>"; };
+		4C90573F21509244009506F6 /* ClipImage_rotating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClipImage_rotating.png; sourceTree = "<group>"; };
+		4C9057472150C830009506F6 /* MCClipImageTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCClipImageTool.swift; sourceTree = "<group>"; };
+		4CA1EB092137D1C2009A49F6 /* MCDatePickerPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCDatePickerPopupView.swift; sourceTree = "<group>"; };
+		4CBA2A53214B9FE800A6D981 /* MCClipImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCClipImageViewController.swift; sourceTree = "<group>"; };
 		4CF340F7210890780049D4A7 /* MCAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF340FA210890780049D4A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF340FC210890780049D4A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +166,34 @@
 			path = RefreshImages;
 			sourceTree = "<group>";
 		};
+		4C86930F214B850B002277BD /* Seven(自定义裁切图片) */ = {
+			isa = PBXGroup;
+			children = (
+				4C869310214B8517002277BD /* MCSevenViewController.swift */,
+			);
+			path = "Seven(自定义裁切图片)";
+			sourceTree = "<group>";
+		};
+		4C90573A2150923C009506F6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4C90573C21509243009506F6 /* ClipImage_sure.png */,
+				4C90573E21509244009506F6 /* ClipImage_cancel.png */,
+				4C90573F21509244009506F6 /* ClipImage_rotating.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		4CBA2A52214B9FDA00A6D981 /* ClipImage(裁切图片) */ = {
+			isa = PBXGroup;
+			children = (
+				4CBA2A53214B9FE800A6D981 /* MCClipImageViewController.swift */,
+				4C9057472150C830009506F6 /* MCClipImageTool.swift */,
+				4C90573A2150923C009506F6 /* Images */,
+			);
+			path = "ClipImage(裁切图片)";
+			sourceTree = "<group>";
+		};
 		4CF340EE210890780049D4A7 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +256,7 @@
 		4CF341152109B2050049D4A7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				4CBA2A52214B9FDA00A6D981 /* ClipImage(裁切图片) */,
 				4CF505D2212180E10008C7D3 /* MCDatePicker(时间选择器) */,
 				4C22A5772114452500614F85 /* MCPhotoKit(图片选择) */,
 				4C245217210F14F800B488D6 /* CountDown(倒计时) */,
@@ -258,6 +301,7 @@
 		4CF3411E2109B3280049D4A7 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				4C86930F214B850B002277BD /* Seven(自定义裁切图片) */,
 				4CF505D5212181240008C7D3 /* Six(时间选择器) */,
 				4C22A57C2114637300614F85 /* Five(自定义相册) */,
 				4C24521A210F159200B488D6 /* Four(倒计时) */,
@@ -317,6 +361,7 @@
 			children = (
 				4CF505D3212181000008C7D3 /* MCDatePicker.swift */,
 				4C32F85521241136000BE8D0 /* MCDateManager.swift */,
+				4CA1EB092137D1C2009A49F6 /* MCDatePickerPopupView.swift */,
 			);
 			path = "MCDatePicker(时间选择器)";
 			sourceTree = "<group>";
@@ -405,14 +450,17 @@
 				4C3291F5210B1772009B820F /* Refresh_header_one@2x.png in Resources */,
 				4C3291FA210B1772009B820F /* Refresh_header_three@3x.png in Resources */,
 				4CF341282109B3850049D4A7 /* MCOneViewController.xib in Resources */,
+				4C90574421509244009506F6 /* ClipImage_cancel.png in Resources */,
 				4CF34102210890780049D4A7 /* Assets.xcassets in Resources */,
 				4C3291F6210B1772009B820F /* Refresh_header_one@3x.png in Resources */,
+				4C90574221509244009506F6 /* ClipImage_sure.png in Resources */,
 				4CF34100210890780049D4A7 /* Main.storyboard in Resources */,
 				4C3291F7210B1772009B820F /* Refresh_footer@3x.png in Resources */,
 				4C22A582211463CD00614F85 /* MCFiveViewController.xib in Resources */,
 				4C3291FB210B1772009B820F /* Refresh_header_two@3x.png in Resources */,
 				4C24521E210F15A400B488D6 /* MCFourViewController.xib in Resources */,
 				4C3291F8210B1772009B820F /* Refresh_header_two@2x.png in Resources */,
+				4C90574521509244009506F6 /* ClipImage_rotating.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,11 +522,15 @@
 				4CF341272109B3850049D4A7 /* MCOneViewController.swift in Sources */,
 				4CF505D4212181000008C7D3 /* MCDatePicker.swift in Sources */,
 				4CF505D7212181300008C7D3 /* MCSixViewController.swift in Sources */,
+				4C9057482150C830009506F6 /* MCClipImageTool.swift in Sources */,
 				4CF3412F2109D0590049D4A7 /* MCTwoViewController.swift in Sources */,
 				4C32F85621241136000BE8D0 /* MCDateManager.swift in Sources */,
+				4C869311214B8517002277BD /* MCSevenViewController.swift in Sources */,
 				4C22A5792114455600614F85 /* MCPhotoPickerViewController.swift in Sources */,
+				4CBA2A54214B9FE800A6D981 /* MCClipImageViewController.swift in Sources */,
 				4C22A581211463CD00614F85 /* MCFiveViewController.swift in Sources */,
 				4CF341342109DAA90049D4A7 /* MCThreeViewController.swift in Sources */,
+				4CA1EB0A2137D1C2009A49F6 /* MCDatePickerPopupView.swift in Sources */,
 				4C24521D210F15A400B488D6 /* MCFourViewController.swift in Sources */,
 				4CF340FD210890780049D4A7 /* ViewController.swift in Sources */,
 				4C245219210F151300B488D6 /* MCCountDown.swift in Sources */,
@@ -631,8 +683,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MC.MCAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -648,8 +702,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MC.MCAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
