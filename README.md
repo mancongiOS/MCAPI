@@ -100,6 +100,8 @@ lazy var pickerView: MCDatePicker = {
 
 ```
 let vc = MCClipImageViewController()
+// 是否裁切圆形图片
+vc.isRound = true
 // 遵守代理
 vc.delegate = self
 // 传入裁切目标图片，和裁切框的size
