@@ -95,5 +95,31 @@ lazy var pickerView: MCDatePicker = {
 }()
 ```
 
+### 功能六：自定义裁切图片尺寸
+![自定义采取图片](https://github.com/mancongiOS/MCAPI/blob/master/GitHubImages/ClipImage.png)
 
+```
+let vc = MCClipImageViewController()
+// 遵守代理
+vc.delegate = self
+// 传入裁切目标图片，和裁切框的size
+vc.settingUIDataWithImage(image, size: size)
+self.present(vc, animated: true, completion: nil)
+```
+
+```
+// 两个代理方法
+extension MCSevenViewController : MCClipImageViewControllerDelegate {
+
+// 点击取消
+func MCClipImageDidCancel() {
+print("点击了取消按钮")
+}
+
+// 获得了图片
+func MCClipImageClipping(image: UIImage) {
+showImageView.image = image
+}
+}
+```
 

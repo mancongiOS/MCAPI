@@ -111,10 +111,13 @@ extension MCSevenViewController {
 
 
 extension MCSevenViewController : MCClipImageViewControllerDelegate {
+   
+    // 点击取消
     func MCClipImageDidCancel() {
         print("点击了取消按钮")
     }
     
+    // 获得了图片
     func MCClipImageClipping(image: UIImage) {
         showImageView.image = image
     }
