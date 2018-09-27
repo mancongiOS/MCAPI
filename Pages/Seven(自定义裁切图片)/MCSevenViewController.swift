@@ -79,7 +79,7 @@ extension MCSevenViewController {
         let image = image7
         let size = size1
         
-        vc.isRound = true
+//        vc.isRound = true
         vc.settingUIDataWithImage(image, size: size)
         self.present(vc, animated: true, completion: nil)
     }
