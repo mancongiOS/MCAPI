@@ -11,12 +11,14 @@ import QuartzCore
 import Accelerate
 
 /**
- 带拓展的功能
- * 1. 图片的旋转
+ 待拓展的功能
+ * 1. （完成）旋转图片。
  * 2. 标出来裁剪框的尺寸和比例
  * 3. 手动调整裁剪框的比例
  * 4. 是否添加水印
- * 5.
+ * 5. 开放裁切框的颜色和UI。
+ * 6. （完成）圆形裁切框
+ * 7.
  */
 
 
@@ -29,94 +31,54 @@ class MCClipImageViewController: UIViewController {
     
     
     weak var delegate : MCClipImageViewControllerDelegate?
+    public var isRound = false
     
     
-    // 裁剪的图片
-    private var image : UIImage = UIImage()
+    // 裁剪的目标图片
+    private var targetImage : UIImage = UIImage()
     // 裁剪的区域
     private var cropSize : CGSize = CGSize.init(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width/2)
-    
-    
-    
-    private var selfWidth = UIScreen.main.bounds.size.width
-    private var selfHeight = UIScreen.main.bounds.size.height
+    // 裁切框的frame
     private var cropFrame = CGRect.init()
+
+    // 待裁切的图片和裁切框的宽高关系， 用于做裁切处理。
+    private var relationType = 0
     
-    private var type = 0
-    
-    // 隐藏状态栏
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
 
     
-    /// 设置初始化UI的数据，裁切的图片，裁切的尺寸
+    /// 设置初始化UI的数据，记录待裁切的图片，要裁切的尺寸
     func settingUIDataWithImage(_ image: UIImage,size:CGSize = CGSize.init(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width/2)) {
-        self.image = image
+        targetImage = image
         cropSize = size
         
-        let crop_W = size.width
-        let crop_H = size.height
-
-        let image_W = image.size.width
-        let image_H = image.size.height
-
-        let imageRadio = image_W / image_H
-        let cropRadio = crop_W / crop_H
-        
-        
-        
-        
-        /** 裁切框宽高比 > 1
-         1. 裁切框宽高比 >= 图片宽高比    imageView宽固定，高适配
-         2. 裁切框宽高比 <  图片宽高比    imageView高固定，宽适配
-         */
-        
-        /** 裁切框宽高比 = 1
-         1. 裁切框宽高比 >= 图片宽高比    imageView宽固定，高适配
-         2. 裁切框宽高比 <  图片宽高比    imageView高固定，宽适配
-         */
-        
-        /** 裁切框宽高比 = 1
-         1. 裁切框宽高比 >= 图片宽高比    imageView宽固定，高适配
-         2. 裁切框宽高比 <  图片宽高比    imageView高固定，宽适配
-         */
-
-        
-        if cropRadio > 1 {
-            if cropRadio >= imageRadio {
-                type = 0
-            } else {
-                type = 1
-            }
-        } else if cropRadio == 1 {
-            if cropRadio >= imageRadio {
-                type = 2
-            } else {
-                type = 3
-            }
-        } else {
-            if cropRadio >= imageRadio {
-                type = 4
-            } else {
-                type = 5
+        //如果是圆形的话，对给的cropSize进行容错处理
+        if (self.isRound) {
+            if (cropSize.width >= cropSize.height) {
+                cropSize = CGSize.init(width: cropSize.height, height: cropSize.height)
+            }else{
+                cropSize = CGSize.init(width: cropSize.width, height: cropSize.width)
             }
         }
+        
+        
+        // 判断裁切框和图片的关系，用于做
+        relationType = targetImage.judgeRelationTypeWithCropSize(cropSize)
         
 
         // 填充图片数据
         fillData()
-        
-        // 设置裁切的矩形区域
-        //        transparentCutCircularArea()
-        
 
-        
         // 根据图片尺寸和裁切框的尺寸设置scrollView的最小缩放比例
         setMinZoomScale()
 
-        transparentCutSquareArea()
-
+        
+        if isRound {
+            // 设置裁切的圆形区域
+            transparentCutCircularArea()
+        } else {
+            // 矩形裁切框
+            transparentCutSquareArea()
+        }
         
         scrollViewDidZoom(scrollView)
     }
@@ -131,9 +93,11 @@ class MCClipImageViewController: UIViewController {
         initUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    // 隐藏状态栏
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
+
     
     // MARK: - Setter & Getter
     private lazy var scrollView: UIScrollView = {
@@ -197,6 +161,8 @@ class MCClipImageViewController: UIViewController {
 
 //MARK: 通知回调，闭包回调，点击事件
 extension MCClipImageViewController {
+    
+    // 取消
     @objc func cancelButtonClicked() {
         if delegate != nil {
             delegate?.MCClipImageDidCancel()
@@ -204,11 +170,13 @@ extension MCClipImageViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-
-    
+    // 确定
     @objc func sureButtonClicked() {
+        var image = getClippingImage()
         
-        let image = getClippingImage()
+        if isRound {
+            image = image.clipCircularImage()
+        }
         
         if delegate != nil {
             delegate?.MCClipImageClipping(image: image)
@@ -218,12 +186,14 @@ extension MCClipImageViewController {
     
     // 图片旋转
     @objc func rotatingButtonClicked() {
-        image = rotationImage(image: image, orientation: .left)
-//         image = ImageTool.image(image, rotation: .left)
-//        let editImage =  image.image
-        imageView.image = image
         
-        settingUIDataWithImage(image, size: cropSize)
+        // 清空之前设置的scale。否则会错乱
+        scrollView.minimumZoomScale = 1.0
+        scrollView.setZoomScale(1.0, animated: true)
+        
+        targetImage = targetImage.rotationImage(orientation: .left)
+        imageView.image = targetImage
+        settingUIDataWithImage(targetImage, size: cropSize)
     }
 }
 
@@ -260,24 +230,20 @@ extension MCClipImageViewController {
     func fillData() {
 
         // 1.添加图片
-        imageView.image = image
+        imageView.image = targetImage
         
         // 2.设置裁剪区域
         let x = (selfWidth - cropSize.width) / 2
         let y = (selfHeight - cropSize.height) / 2
         cropFrame = CGRect.init(x: x, y: y, width: cropSize.width, height: cropSize.height)
         
-        
-        let imageW = image.size.width
-        let imageH = image.size.height
-
+        // 3.计算imgeView的frame
+        let imageW = targetImage.size.width
+        let imageH = targetImage.size.height
         let cropW = cropSize.width
         let cropH = cropSize.height
-        
-        
         var imageViewW,imageViewH,imageViewX,imageViewY : CGFloat
-        
-        switch type {
+        switch relationType {
         case 0,1:  // 裁切框宽高比 > 0
             imageViewW = cropW
             imageViewH = imageH * imageViewW / imageW
@@ -357,9 +323,7 @@ extension MCClipImageViewController {
         overLayView.layer.addSublayer(cropLayer)
     }
     
-    
-    
-    
+    // 设置最小缩放比例
     func setMinZoomScale() {
         // 设置最小的缩放比例。 自动填满裁剪区域
         var scale : CGFloat = 0
@@ -371,7 +335,7 @@ extension MCClipImageViewController {
         let cropH = cropSize.height
         
         
-        switch type {
+        switch relationType {
         case 0:  // 裁切框宽高比 > 1,并且裁切框宽高比 >= 图片宽高比
             scale = imageViewW  /  cropW
         case 1:  // 裁切框宽高比 > 1,并且裁切框宽高比 < 图片宽高比
@@ -386,11 +350,7 @@ extension MCClipImageViewController {
             scale = cropW / imageViewW
         }
         
-        print("type:\(type)------scale:\(scale)")
-        
-                
         //自动缩放填满裁剪区域
-        
         self.scrollView.setZoomScale(scale, animated: false)
         //设置刚好填充满裁剪区域的缩放比例，为最小缩放比例
         self.scrollView.minimumZoomScale = scale
@@ -407,7 +367,7 @@ extension MCClipImageViewController {
          * 6. 裁剪图片，没有了release方法，CGImage会存在内存泄露么
          */
         //图片大小和当前imageView的缩放比例
-        let scaleRatio = image.size.width / imageView.frame.size.width
+        let scaleRatio = targetImage.size.width / imageView.frame.size.width
         //scrollView的缩放比例，即是ImageView的缩放比例
         let scrollScale = self.scrollView.zoomScale
         
@@ -428,7 +388,7 @@ extension MCClipImageViewController {
         let myImageRect = CGRect.init(x: leftTopPoint.x * scaleRatio, y: leftTopPoint.y*scaleRatio, width: width, height: height)
         
         //裁剪图片
-        let imageRef : CGImage = image.cgImage!
+        let imageRef : CGImage = targetImage.cgImage!
         let subImageRef = imageRef.cropping(to: myImageRect)
         UIGraphicsBeginImageContextWithOptions(myImageRect.size, true, 0)
         let context = UIGraphicsGetCurrentContext()
@@ -449,7 +409,6 @@ extension MCClipImageViewController: UIScrollViewDelegate {
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         
-        
         //图片比例改变以后，让改变后的ImageView保持在ScrollView的中央
         let size_W = scrollView.bounds.size.width
         let size_H = scrollView.bounds.size.height
@@ -466,9 +425,7 @@ extension MCClipImageViewController: UIScrollViewDelegate {
         //设置scrollView的contentSize，最小为self.view.frame.size
         let scrollW = contentSize_W >= selfWidth ? contentSize_W : selfWidth
         let scrollH = contentSize_H >= selfHeight ? contentSize_H : selfHeight
-        
         scrollView.contentSize = CGSize.init(width: scrollW, height: scrollH)
-        
         
         
         //设置scrollView的contentInset
@@ -479,8 +436,6 @@ extension MCClipImageViewController: UIScrollViewDelegate {
         
         var leftRightInset : CGFloat = 0;
         var topBottomInset : CGFloat = 0;
-
-        
         
         //imageview的大小和裁剪框大小的三种情况，保证imageview最多能滑动到裁剪框的边缘
         if (imageWidth <= cropWidth) {
@@ -491,7 +446,6 @@ extension MCClipImageViewController: UIScrollViewDelegate {
             leftRightInset = (selfWidth - cropSize.width) * 0.5
         }
         
-        
         if (imageHeight <= cropHeight) {
             topBottomInset = 0
         } else if (imageHeight >= cropHeight && imageHeight <= selfHeight) {
@@ -500,16 +454,19 @@ extension MCClipImageViewController: UIScrollViewDelegate {
             topBottomInset = (selfHeight - cropSize.height) * 0.5
         }
         
-        
         scrollView.contentInset = UIEdgeInsetsMake(topBottomInset, leftRightInset, topBottomInset, leftRightInset)
     }
 }
 
 
+
+
+
+
 //-状态栏高度
-public let MCStatusBarHeight : CGFloat   = UIApplication.shared.statusBarFrame.size.height
+fileprivate let MCStatusBarHeight : CGFloat   = UIApplication.shared.statusBarFrame.size.height
 //-导航栏高度
-public func MCNavigationBarHeight(_ target:UIViewController) -> CGFloat {
+fileprivate func MCNavigationBarHeight(_ target:UIViewController) -> CGFloat {
     if target.navigationController != nil {
         return target.navigationController?.navigationBar.frame.size.height ?? 44
     } else {
@@ -517,5 +474,9 @@ public func MCNavigationBarHeight(_ target:UIViewController) -> CGFloat {
     }
 }
 //-底部安全区域
-public let MCSafeAreaBottomHeight : CGFloat  = (UIScreen.main.bounds.size.height  == 812 ? 34 : 0)
+fileprivate let MCSafeAreaBottomHeight : CGFloat  = (UIScreen.main.bounds.size.height  == 812 ? 34 : 0)
+
+// 屏幕的宽高
+fileprivate var selfWidth = UIScreen.main.bounds.size.width
+fileprivate var selfHeight = UIScreen.main.bounds.size.height
 
